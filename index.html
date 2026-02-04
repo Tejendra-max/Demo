@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broker Login System</title>
+    <style>
+        /* CSS Styles */
+        :root {
+            --primary-teal: #4db6ac;
+            --dark-teal: #26a69a;
+            --bg-light: #e0f2f1;
+            --text-gray: #777;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-card {
+            display: flex;
+            width: 850px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Left Branding Section */
+        .welcome-section {
+            flex: 1.2;
+            background-color: var(--primary-teal);
+            position: relative;
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-bottom-right-radius: 200px; /* Diagonal curve effect */
+        }
+
+        .welcome-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 3.5rem;
+            opacity: 0.5;
+            font-weight: bold;
+            letter-spacing: 5px;
+        }
+
+        .illustration {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 250px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 15px;
+            box-shadow: -10px 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .mock-graph {
+            width: 80%;
+            height: 10px;
+            background: #eee;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .brand-footer {
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Right Form Section */
+        .form-section {
+            flex: 1.5;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            color: var(--dark-teal);
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            text-align: right;
+            font-size: 2rem;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 30px;
+            border-bottom: 1.5px solid #eee;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            border: none;
+            padding: 10px 0;
+            outline: none;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .icon {
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            color: var(--primary-teal);
+            font-size: 1.2rem;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-teal);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(77, 182, 172, 0.4);
+        }
+
+        .login-btn:hover {
+            background-color: var(--dark-teal);
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: 25px;
+        }
+
+        .form-footer a {
+            text-decoration: none;
+            color: var(--dark-teal);
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .form-footer a:hover {
+            color: #00796b;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 860px) {
+            .login-card { width: 95%; height: auto; flex-direction: column; }
+            .welcome-section { border-bottom-right-radius: 0; padding: 20px; text-align: center; }
+            .welcome-text { writing-mode: horizontal-tb; transform: none; font-size: 2rem; }
+            .illustration { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="welcome-section">
+            <h1 class="welcome-text">Welcome</h1>
+            
+            <div class="illustration">
+                <div style="width: 40px; height: 40px; background: var(--primary-teal); border-radius: 50%; margin-bottom: 10px;"></div>
+                <div class="mock-graph" style="width: 60%; background: #4db6ac;"></div>
+                <div class="mock-graph" style="width: 40%;"></div>
+                <div class="mock-graph" style="width: 70%;"></div>
+            </div>
+
+            <p class="brand-footer">Introducing Broker Operating System</p>
+        </div>
+
+        <div class="form-section">
+            <h2>LOGIN</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                    <span class="icon">👤</span>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                    <span class="icon">🔑</span>
+                </div>
+
+                <button type="submit" class="login-btn">Login</button>
+
+                <div class="form-footer">
+                    <a href="#">Forgot?</a>
+                    <a href="#">Help</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for handling interactions
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            
+            // Yahan aap apna login logic add kar sakte hain
+            console.log("Login attempt for:", username);
+            
+            alert("Logging in as: " + username);
+        });
+    </script>
+</body>
+</html>
